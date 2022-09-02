@@ -68,7 +68,6 @@ Project Title: Mini Q&A
      padding-left: 10px;
      border: 1px solid #ccc;
      border-radius: 10px 0 0 10px;
-     /* float: left; */
      outline: none;
  }
 
@@ -80,7 +79,6 @@ Project Title: Mini Q&A
     border: none;
     border-radius: 0 10px 10px 0;
     color: #fff;
-    /* float: right; */
     cursor: pointer;
 }
 

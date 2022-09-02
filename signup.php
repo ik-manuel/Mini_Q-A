@@ -3,7 +3,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mini Q&A - Ask & Get Answer</title>
+    <title>Mini Q&A - Sign UP</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="fontawesome-free/css/all.min.css">
 </head>
@@ -22,6 +22,8 @@
                   <input type="text" name="email" id="email" class="formclass" placeholder="Enter Email">
                   <label for="password">Password</label>
                   <input type="password" name="password" id="password" class="formclass" placeholder="Enter Password">
+                  <label for="confirmPassword">Confirm Password</label>
+                  <input type="password" name="confirmPassword" id="confirmPassword" class="formclass" placeholder="Confirm Password">
                   <input type="submit" value="SIGN UP" class="formclass">
               </form>
               <p>Already have an Account? <a href="signin.html">Sign In</a></p>
