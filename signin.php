@@ -22,7 +22,7 @@
                   <input type="password" name="password" id="password" class="formclass" placeholder="Enter Password">
                   <input type="submit" value="SIGN IN" class="formclass">
               </form>
-              <p>Don't have an Account? <a href="signup.html">Sign Up</a></p>
+              <p>Don't have an Account? <a href="signup.php">Sign Up</a></p>
           </div> 
     </main>
     <footer>

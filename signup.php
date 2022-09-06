@@ -26,7 +26,7 @@
                   <input type="password" name="confirmPassword" id="confirmPassword" class="formclass" placeholder="Confirm Password">
                   <input type="submit" value="SIGN UP" class="formclass">
               </form>
-              <p>Already have an Account? <a href="signin.html">Sign In</a></p>
+              <p>Already have an Account? <a href="signin.php">Sign In</a></p>
           </div> 
     </main>
     <footer>

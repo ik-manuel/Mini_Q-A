@@ -2,7 +2,6 @@
 
 require_once 'app/init.php';
 
-echo URL_ROOT;
 ?> 
 
 
@@ -36,7 +35,7 @@ echo URL_ROOT;
                         <ul>
                             <li><a href="" class="btn-nav">My Questions</a></li>
                             <li><a href="">My Answers</a></li>
-                            <li><a href="signin.html" class="btn">Login/Sign Up</a></li>
+                            <li><a href="signin.php" class="btn">Login/Sign Up</a></li>
                         </ul>
                     </div>
                 </div>
