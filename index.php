@@ -1,27 +1,9 @@
-<!-- <?php
+<?php
 
-$host = "localhost";
-$username = "root";
-$password = "";
-$database = "q&a_db";
+require_once 'app/init.php';
 
-
-$dsn = 'mysql:host=' .$host . '; dbname=' . $database;
-$pdo = new PDO($dsn, $username, $password);
-$pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
-
-$sql = "SELECT * FROM users";
-$stmt = $pdo->prepare($sql);
-$stmt->execute();
-$users = $stmt->fetchAll();
-
-foreach($users as $user){
-    echo $user->name . "<br>";
-}
-
-
-
-?> -->
+echo APPROOT;
+?> 
 
 
 
