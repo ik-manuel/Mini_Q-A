@@ -7,11 +7,11 @@ define('DB_PASSWORD', '');
 define('DB_NAME', 'q&a_db');
 
 
-//Site Path
-define('APPROOT', dirname(dirname(__FILE__)));
+//App root
+define('APP_ROOT', dirname(dirname(__FILE__)));
 
-//SIte Path
-define('SITE_PATH', 'localhost/mini_q&a');
+//URL root
+define('URL_ROOT', 'http://localhost/mini_q&a');
 
 //Site Name
 define('SITE_NAME', 'Mini Q&A');
