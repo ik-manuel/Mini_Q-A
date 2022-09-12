@@ -1,3 +1,4 @@
+<?php require_once 'app/init.php'; ?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -16,13 +17,19 @@
           <h2>Sign In</h2>
           <div id="formcontainer">
               <form action="" method="post">
-                  <label for="email">Email</label>
-                  <input type="text" name="email" id="email" class="formclass" placeholder="Enter Email">
-                  <label for="password">Password</label>
-                  <input type="password" name="password" id="password" class="formclass" placeholder="Enter Password">
-                  <input type="submit" value="SIGN IN" class="formclass">
+                  <div class="form-container">
+                     <label for="email">Email</label>
+                    <input type="text" name="email" id="email" class="formclass" placeholder="Enter Email">
+                  </div>
+                  <div class="form-container">
+                     <label for="password">Password</label>
+                     <input type="password" name="password" id="password" class="formclass" placeholder="Enter Password">
+                  </div>
+                  <div class="form-container">
+                     <input type="submit" value="LOGIN" class="formclass">
+                  </div>
               </form>
-              <p>Don't have an Account? <a href="signup.php">Sign Up</a></p>
+              <p>Don't have an Account? <a href="register.php">Register</a></p>
           </div> 
     </main>
     <footer>

@@ -4,6 +4,7 @@
 * PDO Database
 * Create DB connection
 * Create prepared Statements
+* Return results and rows
 */
 
 class Database {
@@ -35,12 +36,18 @@ class Database {
     }
 
     // Prepare statement
-    public function query($sql){
+    public function prepare($sql){
         $this->stmt = $this->dbh->prepare($sql);
     }
 
+    // Query Statement
+    public function query($sql){
+        $this->stmt = $this->dbh->query($sql);
+        return $this->stmt;
+    }
+
     //Bind Value
-    public function bind($params, $value, $type = null){
+    public function bind($param, $value, $type = null){
         if(is_null($type)){
             switch(true){
                 case is_int($value):
@@ -56,27 +63,30 @@ class Database {
                     $type = PDO::PARAM_STR;
             }
         }
-        $this->stmt->bindValue($params, $value, $type);
+        $this->stmt->bindValue($param, $value, $type);
     }
 
     // Execute prepare statement
     public function execute(){
         return $this->stmt->execute();
-
     }
 
     // Get result as an object
-    public function resultSet(){
-        $this->execute();
+    public function fetchRows(){
+        //$this->execute();
         return $this->stmt->fetchAll(PDO::FETCH_OBJ);
     }
 
     // Get single result as an object
-    public function single(){
+    public function fetchRow(){
         $this->execute();
         return $this->stmt->fetch(PDO::FETCH_OBJ);
     }
 
+    // Get row count
+    public function rowCount(){
+        return $this->stmt->rowCount();
+    }
 
 
 }//END OF DB CLASS

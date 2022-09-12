@@ -2,8 +2,17 @@
 
 require_once 'app/init.php';
 
-?> 
+ $db = new User;
+//  $users = $db->getUsers();
 
+//  foreach($users as $user){
+//     echo $user->name ."<br>";
+//  }
+
+//  $user = $db->getById(1);
+//  echo $user->name;
+
+?> 
 
 
 
@@ -22,7 +31,7 @@ require_once 'app/init.php';
     </header>
     <main>
            <div id="heading">
-                <h1>Mini Q&A</h1>
+                <h1><?php echo SITE_NAME; ?></h1>
                 <form action="" method="post" id="formClass">
                     <input type="text" name="question" placeholder="What's your Question?" class="qstFormClass">
                     <input type="submit" name="submit" value="ASK" class="submitButton">
@@ -35,7 +44,7 @@ require_once 'app/init.php';
                         <ul>
                             <li><a href="" class="btn-nav">My Questions</a></li>
                             <li><a href="">My Answers</a></li>
-                            <li><a href="signin.php" class="btn">Login/Sign Up</a></li>
+                            <li><a href="login.php" class="btn">Login/Register</a></li>
                         </ul>
                     </div>
                 </div>
