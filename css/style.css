@@ -191,6 +191,41 @@ li a:hover {
     padding-right: 5px;
 }
 
+/*////////
+//// Defining Feedback and message style for Error and Success 
+////////*/
+.inputError{
+    border: solid 1px red;
+}
+
+.errorText{
+    color: red;
+}
+
+.fsm_success{
+    width: 100%;
+    height: 35px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+    color: darkcyan;
+    font-weight: bold;
+    background-color: rgb(170, 233, 221);
+}
+
+.fsm_danger{
+    width: 100%;
+    height: 35px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+    color: darkred;
+    font-weight: bold;
+    background-color: rgb(253, 199, 207);
+}
+
 
 /* 
 ///////////////////////////
