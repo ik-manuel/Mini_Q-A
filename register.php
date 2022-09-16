@@ -19,19 +19,23 @@
               <form action="" method="post">
                   <div class="form-container">
                      <label for="name">Name</label>
-                     <input type="text" name="name" id="name" class="formclass" placeholder="Enter Your Name">
+                     <input type="text" name="name" id="name" class="formclass <?php echo (!empty($data['name_err']) ? 'inputError' : '') ?>" value=" <?php echo $data['name']; ?>" placeholder="Enter Your Name">
+                     <span class="errorText"> <?php echo $data['name_err'] ?></span>
                   </div>
                   <div class="form-container">
                      <label for="email">Email</label>
-                     <input type="text" name="email" id="email" class="formclass" placeholder="Enter Email">
+                     <input type="text" name="email" id="email" class="formclass <?php echo (!empty($data['email_err']) ? 'inputError' : '') ?>" value=" <?php echo $data['email']; ?>" placeholder="Enter Email">
+                     <span class="errorText"> <?php echo $data['email_err'] ?></span>
                   </div>
                   <div class="form-container">
                      <label for="password">Password</label>
-                     <input type="password" name="password" id="password" class="formclass" placeholder="Enter Password">
+                     <input type="password" name="password" id="password" class="formclass <?php echo (!empty($data['password_err']) ? 'inputError' : '') ?>" placeholder="Enter Password">
+                     <span class="errorText"> <?php echo $data['password_err'] ?></span>
                   </div>
                   <div class="form-container">
                      <label for="confirmPassword">Confirm Password</label>
-                     <input type="password" name="confirmPassword" id="confirmPassword" class="formclass" placeholder="Confirm Password">
+                     <input type="password" name="confirmPassword" id="confirmPassword" class="formclass <?php echo (!empty($data['confirm_password_err']) ? 'inputError' : '') ?>" placeholder="Confirm Password">
+                     <span class="errorText"> <?php echo $data['confirm_password_err'] ?></span>
                   </div>
                   <div class="form-container">
                      <input type="submit" value="REGISTER" class="formclass">
