@@ -17,6 +17,10 @@ require_once 'app/init.php';
             <div id="navBar"></div>
             <img class="headerImage" src="images/avatar.png" alt="">
     </header>
+
+     <!-- Flash Message -->
+     <?php flash('register_success'); ?>
+
     <main>
            <div id="heading">
                 <h1><?php echo SITE_NAME; ?></h1>

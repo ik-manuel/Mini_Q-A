@@ -39,7 +39,22 @@ class User{
         }else{
             return false;
         }
-    }//End of CreateNewUser Class
+    }//End of CreateNewUser Method
+
+    //Find and Login User
+    public function loginUser($data){
+        $this->db->prepare("SELECT * FROM users WHERE email = :email");
+        $this->db->bind(':email', $data['email']);
+        $row = $this->db->fetchRow();
+        //hashed password from db
+        $hashed_password = $row->password;
+        if(password_verify($data['password'], $hashed_password)){
+            return $row;
+        }else{
+            return false;
+        }
+        
+    }//End of LoginUser Method
 
     //Register user
     public function register(){
@@ -97,8 +112,8 @@ class User{
 
                 //Register user
                 if($this->createNewUser($this->data)){
-                    //redirect function here
-                    header("location:". URL_ROOT . "/login.php");
+                    flash('register_success', 'Account Created Successful');
+                    redirect("index.php");
                 }else{
                     die("Something went wrong");
                 }
@@ -120,7 +135,7 @@ class User{
                 'confirm_password_err' => ''
             ];
         }
-    }//End of Register Class
+    }//End of Register Method
 
 
     //Login user
@@ -149,11 +164,27 @@ class User{
                 $this->data['password_err'] = "Please Enter Password";
             }
 
+            //Check if user/email exist
+            if($this->findUserByEmail($this->data)){
+                //User Found
+            }else{
+                $this->data['email_err'] = "Email/user do not exit";
+            }
+
 
             // Make sure error is empty
             if(empty($this->data['name_err']) && empty($this->data['email_err']) && empty($this->data['password_err']) && empty($this->data['confirm_password_err'])){
                 //Validate
-                die('SUCCESS');
+                //Check and login user
+                $loggedInUser = $this->loginUser($this->data);
+
+                if($loggedInUser){
+                    //set Session
+                    die("You are Login!");
+                }else{
+                    $this->data['password_err'] = "Incorrect Password";
+                }
+
             }else{
                 return $this->data;
             }
@@ -168,7 +199,7 @@ class User{
                 'password_err' => ''
             ];
         }
-    }//End of Login class
+    }//End of Login Method
 
 
 }//END OF USER CLASS
