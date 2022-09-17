@@ -1,7 +1,7 @@
 <?php
 
 require_once 'app/init.php';
-
+$user = new User;
 ?> 
 
 <html lang="en">
@@ -36,7 +36,12 @@ require_once 'app/init.php';
                         <ul>
                             <li><a href="" class="btn-nav">My Questions</a></li>
                             <li><a href="">My Answers</a></li>
+                            <!-- Show only for non-logged in ans loggedin user -->
+                            <?php if($user->isLoggedIn()) : ?>
+                                <li><a href="app/helper/logout.php" class="btn">Log Out</a></li>
+                            <?php else : ?>
                             <li><a href="login.php" class="btn">Login/Register</a></li>
+                            <?php endif; ?>
                         </ul>
                     </div>
                 </div>

@@ -13,6 +13,32 @@ class User{
         $this->db = new Database;
     }
 
+    //User Session
+    public function createUserSession($user){
+        $_SESSION['user_id'] = $user->user_id;
+        $_SESSION['name'] = $user->name;
+        $_SESSION['email'] = $user->email;
+        redirect('index.php');
+    }//End of CreateUserSession Method
+
+    //LogOut User and end Sessions
+    public function logOut(){
+        unset($_SESSION['user_id']);
+        unset($_SESSION['name']);
+        unset($_SESSION['email']);
+        session_destroy();
+        redirect('login.php');
+    }//End of LogOut Method
+
+    //isUserLogin
+    public function isLoggedIn(){
+        if(isset($_SESSION['user_id'])){
+            return true;
+        }else{
+            return false;
+        }
+    }//End isLoggedIn method
+
     //Find user by Email
     public function findUserByEmail($data){
         $this->db->prepare("SELECT * FROM users WHERE email = :email");
@@ -180,7 +206,7 @@ class User{
 
                 if($loggedInUser){
                     //set Session
-                    die("You are Login!");
+                    $this->createUserSession($loggedInUser);
                 }else{
                     $this->data['password_err'] = "Incorrect Password";
                 }
