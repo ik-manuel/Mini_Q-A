@@ -179,7 +179,7 @@ li a:hover {
     text-decoration: none;
 }
 
- span{
+ .ansCount{
      margin-left: 10px;
      font-size: 14px;
  }
@@ -195,11 +195,15 @@ li a:hover {
 //// Defining Feedback and message style for Error and Success 
 ////////*/
 .inputError{
-    border: solid 1px red;
+    border: solid 1px red !important;
 }
 
 .errorText{
     color: red;
+}
+
+.block{
+    display: inline-block;
 }
 
 .fsm_success{

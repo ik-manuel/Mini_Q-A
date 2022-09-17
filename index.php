@@ -2,19 +2,7 @@
 
 require_once 'app/init.php';
 
- $db = new User;
-//  $users = $db->getUsers();
-
-//  foreach($users as $user){
-//     echo $user->name ."<br>";
-//  }
-
-//  $user = $db->getById(1);
-//  echo $user->name;
-
 ?> 
-
-
 
 <html lang="en">
 <head>
@@ -51,7 +39,7 @@ require_once 'app/init.php';
                 <div class="questionBox">
                     <div class="questions">
                         <div class="question">
-                           <h3><a href="">Lorem ipsum dolor sit amet consectetur adipisicing elit.</a> <span>(2 Answer)</span> </h3>
+                           <h3><a href="">Lorem ipsum dolor sit amet consectetur adipisicing elit.</a> <span class="ansCount">(2 Answer)</span> </h3>
                         </div>
                         <div class="questionDate">
                             <p>Asked August 10th, 2022</p>
@@ -59,7 +47,7 @@ require_once 'app/init.php';
                     </div>
                     <div class="questions">
                         <div class="question">
-                           <h3><a href="">Lorem ipsum dolor sit amet consectetur adipisicing elit.</a> <span>(2 Answer)</span> </h3>
+                           <h3><a href="">Lorem ipsum dolor sit amet consectetur adipisicing elit.</a> <span class="ansCount">(2 Answer)</span> </h3>
                         </div>
                         <div class="questionDate">
                             <p>Asked August 10th, 2022</p>
@@ -67,13 +55,13 @@ require_once 'app/init.php';
                     </div>
                     <div class="questions">
                         <div class="question">
-                           <h3><a href="">Lorem ipsum dolor sit amet consectetur?</a> <span>(2 Answer)</span> </h3>
+                           <h3><a href="">Lorem ipsum dolor sit amet consectetur?</a> <span class="ansCount">(2 Answer)</span> </h3>
                         </div>
                         <div class="questionDate">
                             <p>Asked August 10th, 2022</p>
                         </div>
                     </div>
-
+                    
                 </div>
                 
                

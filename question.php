@@ -1,3 +1,5 @@
+<?php require_once 'app/init.php'; ?>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">

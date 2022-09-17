@@ -19,7 +19,7 @@
               <form action="" method="post">
                   <div class="form-container">
                      <label for="email">Email</label>
-                    <input type="text" name="email" id="email" class="formclass" placeholder="Enter Email">
+                    <input type="text" name="email" id="email" class="inputError formclass" placeholder="Enter Email">
                   </div>
                   <div class="form-container">
                      <label for="password">Password</label>

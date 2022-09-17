@@ -43,7 +43,6 @@ class Database {
     // Query Statement
     public function query($sql){
         $this->stmt = $this->dbh->query($sql);
-        return $this->stmt;
     }
 
     //Bind Value
@@ -73,7 +72,7 @@ class Database {
 
     // Get result as an object
     public function fetchRows(){
-        //$this->execute();
+        $this->execute();
         return $this->stmt->fetchAll(PDO::FETCH_OBJ);
     }
 

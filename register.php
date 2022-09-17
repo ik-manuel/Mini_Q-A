@@ -1,10 +1,18 @@
 <?php require_once 'app/init.php'; ?>
+<?php
+   
+   $reg_user = new User;
+   $reg_user->register();
+
+
+?>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> <?php echo SITE_NAME; ?> - REGISTER</title>
+    <title> <?php echo SITE_NAME; ?> - Register</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="fontawesome-free/css/all.min.css">
 </head>
@@ -16,26 +24,26 @@
     <main>
           <h2>Sign Up</h2>
           <div id="formcontainer">
-              <form action="" method="post">
+              <form action="<?php echo URL_ROOT ?>/register.php" method="post">
                   <div class="form-container">
                      <label for="name">Name</label>
-                     <input type="text" name="name" id="name" class="formclass <?php echo (!empty($data['name_err']) ? 'inputError' : '') ?>" value=" <?php echo $data['name']; ?>" placeholder="Enter Your Name">
-                     <span class="errorText"> <?php echo $data['name_err'] ?></span>
+                     <input type="text" name="name" id="name" class="formclass <?php echo (!empty($reg_user->data['name_err'])) ? 'inputError' : ''; ?>" value="<?php echo $reg_user->data['name']; ?>" placeholder="Enter Your Name">
+                     <span class="errorText block"><?php echo $reg_user->data['name_err']; ?></span>
                   </div>
                   <div class="form-container">
                      <label for="email">Email</label>
-                     <input type="text" name="email" id="email" class="formclass <?php echo (!empty($data['email_err']) ? 'inputError' : '') ?>" value=" <?php echo $data['email']; ?>" placeholder="Enter Email">
-                     <span class="errorText"> <?php echo $data['email_err'] ?></span>
+                     <input type="text" name="email" id="email" class="formclass <?php echo (!empty($reg_user->data['email_err'])) ? 'inputError' : ''; ?>" value="<?php echo $reg_user->data['email']; ?>" placeholder="Enter Email">
+                     <span class="errorText block"><?php echo $reg_user->data['email_err']; ?></span>
                   </div>
                   <div class="form-container">
                      <label for="password">Password</label>
-                     <input type="password" name="password" id="password" class="formclass <?php echo (!empty($data['password_err']) ? 'inputError' : '') ?>" placeholder="Enter Password">
-                     <span class="errorText"> <?php echo $data['password_err'] ?></span>
+                     <input type="password" name="password" id="password" class="formclass <?php echo (!empty($reg_user->data['password_err'])) ? 'inputError' : ''; ?>" value="<?php echo $reg_user->data['password']; ?>" placeholder="Enter Password">
+                     <span class="errorText block"><?php echo $reg_user->data['password_err']; ?></span>
                   </div>
                   <div class="form-container">
-                     <label for="confirmPassword">Confirm Password</label>
-                     <input type="password" name="confirmPassword" id="confirmPassword" class="formclass <?php echo (!empty($data['confirm_password_err']) ? 'inputError' : '') ?>" placeholder="Confirm Password">
-                     <span class="errorText"> <?php echo $data['confirm_password_err'] ?></span>
+                     <label for="confirm_password">Confirm Password</label>
+                     <input type="password" name="confirm_password" id="confirmPassword" class="formclass <?php echo (!empty($reg_user->data['confirm_password_err'])) ? 'inputError' : ''; ?>" value="<?php echo $reg_user->data['confirm_password']; ?>" placeholder="Confirm Password">
+                     <span class="errorText block"><?php echo $reg_user->data['confirm_password_err']; ?></span>
                   </div>
                   <div class="form-container">
                      <input type="submit" value="REGISTER" class="formclass">
