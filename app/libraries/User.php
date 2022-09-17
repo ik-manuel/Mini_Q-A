@@ -13,6 +13,19 @@ class User{
         $this->db = new Database;
     }
 
+    //Find user by Email
+    public function findUserByEmail($data){
+        $this->db->prepare("SELECT * FROM users WHERE email = :email");
+        $this->db->bind(':email', $data['email']);
+        $row = $this->db->fetchRow();
+        //check email result
+        if($this->db->rowCount() > 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     //Create new user record in db
     public function createNewUser($data){
         $this->db->prepare("INSERT INTO users (name, email, password) VALUES(:name, :email, :password)");
@@ -56,6 +69,8 @@ class User{
             //Validate Email
             if(empty($_POST['email'])){
                 $this->data['email_err'] = "Please Enter Email";
+            }elseif($this->findUserByEmail($this->data)){
+                $this->data['email_err'] = "Email is already taken";
             }
 
             //Validate Password

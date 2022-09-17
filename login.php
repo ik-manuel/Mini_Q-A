@@ -4,7 +4,6 @@
    $login_user = new User;
    $login_user->login();
 
-
 ?>
 
 <html lang="en">
