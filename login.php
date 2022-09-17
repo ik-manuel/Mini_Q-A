@@ -1,4 +1,12 @@
 <?php require_once 'app/init.php'; ?>
+<?php
+   
+   $login_user = new User;
+   $login_user->login();
+
+
+?>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -16,14 +24,16 @@
     <main>
           <h2>Sign In</h2>
           <div id="formcontainer">
-              <form action="" method="post">
+              <form action="<?php echo URL_ROOT ?>/login.php" method="post">
                   <div class="form-container">
                      <label for="email">Email</label>
-                    <input type="text" name="email" id="email" class="inputError formclass" placeholder="Enter Email">
+                    <input type="text" name="email" id="email" class="formclass <?php echo (!empty($login_user->data['email_err'])) ? 'inputError' : ''; ?>" value="<?php echo $login_user->data['email']; ?>" placeholder="Enter Email">
+                    <span class="errorText block"><?php echo $login_user->data['email_err']; ?></span>
                   </div>
                   <div class="form-container">
                      <label for="password">Password</label>
-                     <input type="password" name="password" id="password" class="formclass" placeholder="Enter Password">
+                     <input type="password" name="password" id="password" class="formclass <?php echo (!empty($login_user->data['password_err'])) ? 'inputError' : ''; ?>" value="<?php echo $login_user->data['password']; ?>" placeholder="Enter Password">
+                     <span class="errorText block"><?php echo $login_user->data['password_err']; ?></span>
                   </div>
                   <div class="form-container">
                      <input type="submit" value="LOGIN" class="formclass">

@@ -13,6 +13,21 @@ class User{
         $this->db = new Database;
     }
 
+    //Create new user record in db
+    public function createNewUser($data){
+        $this->db->prepare("INSERT INTO users (name, email, password) VALUES(:name, :email, :password)");
+        //Bind data
+        $this->db->bind(':name', $data['name']);
+        $this->db->bind(':email', $data['email']);
+        $this->db->bind(':password', $data['password']);
+        //execute bind data
+        if($this->db->execute()){
+            return true;
+        }else{
+            return false;
+        }
+    }//End of CreateNewUser Class
+
     //Register user
     public function register(){
         // Check for Post
@@ -59,10 +74,19 @@ class User{
                 }
             }
 
-            // Make sure error is empty
+            // Make sure error is empty to finally register user
             if(empty($this->data['name_err']) && empty($this->data['email_err']) && empty($this->data['password_err']) && empty($this->data['confirm_password_err'])){
                 //Validate
-                die('SUCCESS');
+                //create hash password
+                $this->data['password'] = password_hash($this->data['password'], PASSWORD_DEFAULT);
+
+                //Register user
+                if($this->createNewUser($this->data)){
+                    //redirect function here
+                    header("location:". URL_ROOT . "/login.php");
+                }else{
+                    die("Something went wrong");
+                }
             }else{
                 return $this->data;
             }
@@ -81,7 +105,55 @@ class User{
                 'confirm_password_err' => ''
             ];
         }
-    }
+    }//End of Register Class
+
+
+    //Login user
+    public function login(){
+        // Check for Post
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            // process form data
+
+            //Sanitize POST data
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+            //Init data
+            $this->data = [
+                'email' => trim($_POST['email']),
+                'password' => trim($_POST['password']),
+                'email_err' => '',
+                'password_err' => ''
+            ];
+
+            //Validate Email
+            if(empty($_POST['email'])){
+                $this->data['email_err'] = "Please Enter Email";
+            }
+
+            //Validate Password
+            if(empty($_POST['password'])){
+                $this->data['password_err'] = "Please Enter Password";
+            }
+
+
+            // Make sure error is empty
+            if(empty($this->data['name_err']) && empty($this->data['email_err']) && empty($this->data['password_err']) && empty($this->data['confirm_password_err'])){
+                //Validate
+                die('SUCCESS');
+            }else{
+                return $this->data;
+            }
+        
+            
+        }else{
+             //init data
+             $this->data = [
+                'email' => '',
+                'password' => '',
+                'email_err' => '',
+                'password_err' => ''
+            ];
+        }
+    }//End of Login class
 
 
 }//END OF USER CLASS
