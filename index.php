@@ -34,10 +34,10 @@ $user = new User;
                     <h2>Top Questions</h2>
                     <div class="navMenu">
                         <ul>
-                            <li><a href="" class="btn-nav">My Questions</a></li>
-                            <li><a href="">My Answers</a></li>
                             <!-- Show only for non-logged in ans loggedin user -->
                             <?php if($user->isLoggedIn()) : ?>
+                                <li><a href="" class="btn-nav">My Questions</a></li>
+                                <li><a href="">My Answers</a></li>
                                 <li><a href="app/helper/logout.php" class="btn">Log Out</a></li>
                             <?php else : ?>
                             <li><a href="login.php" class="btn">Login/Register</a></li>

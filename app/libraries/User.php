@@ -13,13 +13,25 @@ class User{
         $this->db = new Database;
     }
 
-    //User Session
+    //User Session for existin user
     public function createUserSession($user){
         $_SESSION['user_id'] = $user->user_id;
         $_SESSION['name'] = $user->name;
         $_SESSION['email'] = $user->email;
         redirect('index.php');
     }//End of CreateUserSession Method
+    
+    //User Session for new user
+    public function createNewUserSession($data){
+        $this->db->prepare("SELECT * FROM users WHERE email = :email");
+        $this->db->bind(':email', $data['email']);
+        $row = $this->db->fetchRow();
+        
+        $_SESSION['user_id'] = $row->user_id;
+        $_SESSION['name'] = $row->name;
+        $_SESSION['email'] = $row->email;
+        redirect('index.php');
+    }//End of CreateNewUserSession Method
 
     //LogOut User and end Sessions
     public function logOut(){
@@ -139,6 +151,7 @@ class User{
                 //Register user
                 if($this->createNewUser($this->data)){
                     flash('register_success', 'Account Created Successful');
+                    $this->createNewUserSession($this->data);
                     redirect("index.php");
                 }else{
                     die("Something went wrong");
