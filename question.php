@@ -1,5 +1,9 @@
 <?php require_once 'app/init.php'; ?>
-
+<?php
+  //instantiate Question object
+  $qst = new Questions;
+  $question = $qst->fetchQuestion();
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -16,7 +20,7 @@
     </header>
     <main>
            <div id="questionTitle">
-                <h2 class="title">Lorem ipsum dolor sit amet consectetur adipisicing elit?</h2>
+                <h2 class="title"><?php echo (isset($question->question)) ? $question->question : '404'; ?></h2>
            </div>
            <div id="wrapper">
                 <div id="top">

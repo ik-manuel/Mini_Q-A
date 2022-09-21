@@ -108,49 +108,49 @@ class User{
                 'email' => trim($_POST['email']),
                 'password' => trim($_POST['password']),
                 'confirm_password' => trim($_POST['confirm_password']),
-                'name_err' => '',
-                'email_err' => '',
-                'password_err' => '',
-                'confirm_password_err' => ''
+                'nameErr' => '',
+                'emailErr' => '',
+                'passwordErr' => '',
+                'confirm_passwordErr' => ''
             ];
 
             //Validate Name
             if(empty($_POST['name'])){
-                $this->data['name_err'] = "Please Enter Name";
+                $this->data['nameErr'] = "Please Enter Name";
             }
 
             //Validate Email
             if(empty($_POST['email'])){
-                $this->data['email_err'] = "Please Enter Email";
+                $this->data['emailErr'] = "Please Enter Email";
             }elseif($this->findUserByEmail($this->data)){
-                $this->data['email_err'] = "Email is already taken";
+                $this->data['emailErr'] = "Email is already taken";
             }
 
             //Validate Password
             if(empty($_POST['password'])){
-                $this->data['password_err'] = "Please Enter Password";
+                $this->data['passwordErr'] = "Please Enter Password";
             }elseif(strlen($this->data['password']) < 6){
-                $this->data['password_err'] = "Password must be at least 6 characters";
+                $this->data['passwordErr'] = "Password must be at least 6 characters";
             }
 
             //Validate Confirm Password
             if(empty($_POST['confirm_password'])){
-                $this->data['confirm_password_err'] = "Please Confirm Password";
+                $this->data['confirm_passwordErr'] = "Please Confirm Password";
             }else{
                 if($this->data['password'] != $this->data['confirm_password']){
-                    $this->data['confirm_password_err'] = "Password do not match";
+                    $this->data['confirm_passwordErr'] = "Password do not match";
                 }
             }
 
             // Make sure error is empty to finally register user
-            if(empty($this->data['name_err']) && empty($this->data['email_err']) && empty($this->data['password_err']) && empty($this->data['confirm_password_err'])){
+            if(empty($this->data['nameErr']) && empty($this->data['emailErr']) && empty($this->data['passwordErr']) && empty($this->data['confirm_passwordErr'])){
                 //Validate
                 //create hash password
                 $this->data['password'] = password_hash($this->data['password'], PASSWORD_DEFAULT);
 
                 //Register user
                 if($this->createNewUser($this->data)){
-                    flash('register_success', 'Account Created Successful');
+                    flash('success_message', 'Account Created Successful');
                     $this->createNewUserSession($this->data);
                     redirect("index.php");
                 }else{
@@ -168,10 +168,10 @@ class User{
                 'email' => '',
                 'password' => '',
                 'confirm_password' => '',
-                'name_err' => '',
-                'email_err' => '',
-                'password_err' => '',
-                'confirm_password_err' => ''
+                'nameErr' => '',
+                'emailErr' => '',
+                'passwordErr' => '',
+                'confirm_passwordErr' => ''
             ];
         }
     }//End of Register Method
@@ -189,30 +189,30 @@ class User{
             $this->data = [
                 'email' => trim($_POST['email']),
                 'password' => trim($_POST['password']),
-                'email_err' => '',
-                'password_err' => ''
+                'emailErr' => '',
+                'passwordErr' => ''
             ];
 
             //Validate Email
             if(empty($_POST['email'])){
-                $this->data['email_err'] = "Please Enter Email";
+                $this->data['emailErr'] = "Please Enter Email";
             }
 
             //Validate Password
             if(empty($_POST['password'])){
-                $this->data['password_err'] = "Please Enter Password";
+                $this->data['passwordErr'] = "Please Enter Password";
             }
 
             //Check if user/email exist
             if($this->findUserByEmail($this->data)){
                 //User Found
             }else{
-                $this->data['email_err'] = "Email/user do not exit";
+                $this->data['emailErr'] = "Email/user do not exit";
             }
 
 
             // Make sure error is empty
-            if(empty($this->data['name_err']) && empty($this->data['email_err']) && empty($this->data['password_err']) && empty($this->data['confirm_password_err'])){
+            if(empty($this->data['nameErr']) && empty($this->data['emailErr']) && empty($this->data['passwordErr']) && empty($this->data['confirm_passwordErr'])){
                 //Validate
                 //Check and login user
                 $loggedInUser = $this->loginUser($this->data);
@@ -221,7 +221,7 @@ class User{
                     //set Session
                     $this->createUserSession($loggedInUser);
                 }else{
-                    $this->data['password_err'] = "Incorrect Password";
+                    $this->data['passwordErr'] = "Incorrect Password";
                 }
 
             }else{
@@ -234,8 +234,8 @@ class User{
              $this->data = [
                 'email' => '',
                 'password' => '',
-                'email_err' => '',
-                'password_err' => ''
+                'emailErr' => '',
+                'passwordErr' => ''
             ];
         }
     }//End of Login Method
